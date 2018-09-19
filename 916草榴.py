@@ -5,7 +5,6 @@ import os
 import threading
 import random
 
-
 class Caoliu:
     def __init__(self):
         self.header_data = {
