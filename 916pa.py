@@ -41,7 +41,9 @@ class Caoliu:
             p_reff = re.compile("NAME=\"reff\" value=\"(.+?)\"")
             ref = p_ref.findall(download_text)[0]
             reff = p_reff.findall(download_text)[0]
+            # print(p_ref,p_reff,ref,reff)
             r = requests.get("http://www.rmdown.com/download.php?ref=" + ref + "&reff=" + reff + "&submit=download")
+            # print(r.content)
             # just get green torrent link
             with open("torrent_dir\\" + ref + str(random.randint(1, 100)) + ".torrent", "wb") as f:
                 f.write(r.content)  # add random number to name , avoid conflicting
