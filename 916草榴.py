@@ -106,4 +106,4 @@ class Caoliu:
 
 if __name__ == "__main__":
     c = Caoliu()
-    c.start(downloadtype="yazhouwuma", page_start=1, page_end=5, max_thread_num=50)
+    c.start(downloadtype="guochanyuanchuang", page_start=1, page_end=2, max_thread_num=50)
