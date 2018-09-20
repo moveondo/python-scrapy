@@ -51,13 +51,13 @@ class Caoliu:
             print("download page " + url + " failed")
 
     def index_page(self, fid=2, offset=1):
-        p = re.compile("<h3><a href=\"(.+?)\"")
+        p = re.compile("<h3><a href=\"(.+?)\".*?>([\情侣\]*?)</a>")
         try:
             tmp_url = "http://www.t66y.com/thread0806.php?fid=" + str(fid) + "&search=&page=" + str(offset)
             r = requests.get(tmp_url)
+            print(p.findall(r.text))
             for i in p.findall(r.text):
                 self.detail_page(i)
-
         except:
             print("index page " + str(offset) + " get failed")
 
@@ -73,6 +73,7 @@ class Caoliu:
             for i in p2.findall(r.text):
                 url_set.add(i)
             url_list = list(url_set)
+
             for i in url_list:
                 self.download_page(i)
         except:
