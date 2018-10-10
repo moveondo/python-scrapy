@@ -59,3 +59,6 @@ if __name__ == '__main__':
     start_url = "http://news.163.com/rank/"
     Spider(start_url)
     print "end"
+    
+    
+    
