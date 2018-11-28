@@ -4,12 +4,16 @@ Gender
 根据中文姓名猜测其性别
 
 不到20行纯Python代码(核心部分)
-无任何依赖库
-兼容python3, python2, pypy
-82%的准确率
-可用于猜测性别
-也可用于判断名字的男性化/女性化程度
 
+无任何依赖库
+
+兼容python3, python2, pypy
+
+82%的准确率
+
+可用于猜测性别
+
+也可用于判断名字的男性化/女性化程度
 
 
 
@@ -22,9 +26,13 @@ Gender
 应用到猜名字上
 
 P(gender=男|name=本山) 
+
 = P(name=本山|gender=男) * P(gender=男) / P(name=本山)
+
 = P(name has 本|gender=男) * P(name has 山|gender=男) * P(gender=男) / P(name=本山)
+
 计算
+
 文件charfreq.csv是怎么来的?
 
 曾经有个东西叫开房记录.avi(雾)，里面有名字和性别, 2000w条, 统计一下得出
@@ -42,9 +50,12 @@ P(gender=男|name=本山)
 不用算, 在算概率的时候会互相约去
 
 坑
+
+```
 >>> ngender.guess('李胜男')
 ('male', 0.851334658742)
 虽然两个字都很偏男性，但是结合起来就是女性名
+```
 
 
 ```
