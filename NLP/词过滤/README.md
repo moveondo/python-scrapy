@@ -97,3 +97,9 @@ deque除了实现list的append()和pop()外，还支持appendleft()和popleft()�
 
 
 ```
+
+```
+python assert断言的作用
+
+
+```
