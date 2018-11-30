@@ -46,7 +46,7 @@ def create_session():
 
 
 if __name__ == '__main__':
-    requests_session, requests_cookies = create_session()
+    # requests_session, requests_cookies = create_session()
 
     # url = 'http://www.zhihu.com/login/email'
     url = 'http://www.zhihu.com/topic/19552832'

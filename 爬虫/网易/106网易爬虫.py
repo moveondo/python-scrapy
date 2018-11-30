@@ -18,7 +18,7 @@ def StringListSave(save_path, filename, slist):
 def Page_Info(myPage):
     '''Regex'''
     mypage_Info = re.findall(r'<div class="titleBar" id=".*?"><h2>(.*?)</h2><div class="more"><a href="(.*?)">.*?</a></div></div>', myPage, re.S)
-    # print("mypage_Info===",mypage_Info)
+    print("mypage_Info===",mypage_Info)
     return mypage_Info
 
 def New_Page_Info(new_page):
