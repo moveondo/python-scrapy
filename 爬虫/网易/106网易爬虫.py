@@ -36,8 +36,6 @@ def New_Page_Info(new_page):
     assert(len(new_items) == len(new_urls))
     return zip(new_items, new_urls)
 
-
-
 def Spider(url):
     i = 0
     print ("downloadingurl ", url)
