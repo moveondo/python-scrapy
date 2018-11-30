@@ -58,7 +58,6 @@ def Spider(url):
         i += 1
 
 
-
 if __name__ == '__main__':
     print ("start")
     start_url = "http://news.163.com/rank/"
