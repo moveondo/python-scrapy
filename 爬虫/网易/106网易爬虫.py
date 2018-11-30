@@ -15,8 +15,6 @@ def StringListSave(save_path, filename, slist):
         for s in slist:
             fp.write("%s\t\t\t\t\t\t\t\t%s\n" % (s[0].encode("utf8"), s[1].encode("utf8")))
 
-
-
 def Page_Info(myPage):
     '''Regex'''
     mypage_Info = re.findall(r'<div class="titleBar" id=".*?"><h2>(.*?)</h2><div class="more"><a href="(.*?)">.*?</a></div></div>', myPage, re.S)
