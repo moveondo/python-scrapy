@@ -15,6 +15,7 @@ from selenium.webdriver.common.proxy import *
 site = 'http://flight.qunar.com'
 hot_city_list = [u'上海', u'北京', u'广州', u'深圳']
 num = len(hot_city_list)
+print(num)
 
 
 def one_driver_ticket(driver, from_city, to_city):
@@ -70,7 +71,7 @@ def get_proxy_list(file_path):
     proxy_list = []
     try:
         f = open(file_path, 'r')
-        all_lines = f.readlines() # readlines()每次按行读取整个文件内容，将读取到的内容放到一个列表中，返回list类型。
+        all_lines = f.readlines()  # readlines()每次按行读取整个文件内容，将读取到的内容放到一个列表中，返回list类型。
         for line in all_lines:
             proxy_list.append(line.replace('\r', '').replace('\n', ''))
         f.close()
@@ -88,7 +89,7 @@ def ticket_worker_proxy(city_proxy):
         'sslProxy': proxy,
         'noProxy': '' # 过滤不需要代理的地址
     })
-    driver = webdriver.Firefox(proxy=proxy)
+    driver = webdriver.Chrome()(proxy=proxy)
     driver.get(site)
     driver.maximize_window() # 将浏览器最大化显示
     for i in xrange(num):
@@ -110,10 +111,10 @@ def all_ticket_proxy():
     pool.join()
 
 def ticket_worker_no_proxy(city):
-    driver = webdriver.Firefox()
-    # chromedriver = r'C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe'
-    # os.environ['webdriver.chrome.driver'] = chromedriver
-    # driver = webdriver.Chrome(chromedriver)
+    # driver = webdriver.Chrome()
+    chromedriver = r'/Users/my/Documents/GitHub/python/爬虫/chromedriver.exe'
+    os.environ['webdriver.chrome.driver'] = chromedriver
+    driver = webdriver.Chrome(chromedriver)
     driver.get(site)
     driver.maximize_window() # 将浏览器最大化显示
     time.sleep(5) # 控制间隔时间，等待浏览器反映
