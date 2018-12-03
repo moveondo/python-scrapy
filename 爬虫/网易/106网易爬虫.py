@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
-import sys
-import urllib2
+# import sys
+# import urllib2
 import requests
 import re
 from lxml import etree
@@ -18,6 +18,7 @@ def StringListSave(save_path, filename, slist):
 def Page_Info(myPage):
     '''Regex'''
     mypage_Info = re.findall(r'<div class="titleBar" id=".*?"><h2>(.*?)</h2><div class="more"><a href="(.*?)">.*?</a></div></div>', myPage, re.S)
+    print(mypage_Info)
     return mypage_Info
 
 def New_Page_Info(new_page):
@@ -38,7 +39,7 @@ def New_Page_Info(new_page):
 
 def Spider(url):
     i = 0
-    print "downloading ", url
+    print ("downloading ", url)
     myPage = requests.get(url).content.decode("gbk")
     # myPage = urllib2.urlopen(url).read().decode("gbk")
     myPageResults = Page_Info(myPage)
@@ -47,7 +48,7 @@ def Spider(url):
     StringListSave(save_path, filename, myPageResults)
     i += 1
     for item, url in myPageResults:
-        print "downloading ", url
+        print("downloadingmyPageResults ", url)
         new_page = requests.get(url).content.decode("gbk")
         # new_page = urllib2.urlopen(url).read().decode("gbk")
         newPageResults = New_Page_Info(new_page)
@@ -57,10 +58,7 @@ def Spider(url):
 
 
 if __name__ == '__main__':
-    print "start"
+    print ("start")
     start_url = "http://news.163.com/rank/"
     Spider(start_url)
-    print "end"
-    
-    
-    
+    print ("end")

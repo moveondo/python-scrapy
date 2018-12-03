@@ -23,6 +23,7 @@ def create_session():
         'Referer': 'http://www.zhihu.com/'
     }
     r = session.post('http://www.zhihu.com/login/email', data=login_data, headers=header)
+    print(r.json())
     if r.json()['r'] == 1:
         print 'Login Failed, reason is:',
         for m in r.json()['data']:
@@ -46,12 +47,12 @@ def create_session():
 
 
 if __name__ == '__main__':
-    requests_session, requests_cookies = create_session()
+    requests_cookies = create_session()
 
     # url = 'http://www.zhihu.com/login/email'
     url = 'http://www.zhihu.com/topic/19552832'
     # content = requests_session.get(url).content # 未登陆
     # content = requests.get(url, cookies=requests_cookies).content # 已登陆
-    content = requests_session.get(url, cookies=requests_cookies).content # 已登陆
+    content = requests.session().get(url, cookies=requests_cookies).content # 已登陆
     with open('url.html', 'w') as fp:
         fp.write(content)
