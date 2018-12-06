@@ -11,6 +11,11 @@ from requests.packages import urllib3
 import time
 
 
+requests.adapters.DEFAULT_RETRIES = 5
+s = requests.session()
+s.keep_alive = False
+
+
 
 def get_page_index(keyword, city_code, offset):
     data = {
@@ -21,13 +26,14 @@ def get_page_index(keyword, city_code, offset):
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) '
                       + 'Chrome/55.0.2883.87 Safari/537.36',
+        'Connection': 'close',
     }
     proxies = {
-        'http': 'http://127.0.0.1:8087',
-        'https': 'https://127.0.0.1:8087'
+        'http': 'http://117.135.153.8:80',
+        'https': 'https://103.251.87.56:868'
     }
     url = 'https://www.zhipin.com/job_detail/?' + urlencode(data)
-    print(url)
+    # print(url)
     try:
         urllib3.disable_warnings()
         res = requests.get(url, headers=headers)
@@ -37,8 +43,8 @@ def get_page_index(keyword, city_code, offset):
             res1 = requests.get(url, headers=headers, proxies=proxies, verify=False)
             return res1.text
         return None
-    except RequestException:
-        print('请求初始页出错')
+    except TypeError as e:
+        print('请求初始页出错=='+e)
         return None
 
 
@@ -76,12 +82,14 @@ def get_page_detail(url):
 
 
 def parse_page_detail(url, html):
+    print("url==="+url)
     soup = BeautifulSoup(html, 'lxml')
     times = soup.select('.time')
     post_time = times[0].text
     current_time = time.strftime('%Y%m%d')
     position_names = soup.select('h1')
     position_name = position_names[0].text.split(' ')[0]
+    print(position_names[0].text)
     salary = position_names[0].text.split(' ')[-1]
     cities = soup.select('.job-primary .info-primary p')
     cities_str = str(cities[0])
@@ -167,6 +175,6 @@ def main(offset):
 if __name__ == '__main__':
     print("start...")
     pool = Pool()
-    pool.map(main, [i for i in range(1, 30)])
+    pool.map(main, [i for i in range(1, 20)])
     pool.close()
     pool.join()

@@ -134,4 +134,45 @@ for i in range(30):
 ```
 生成器里的函数只循环了20次，但是next函数却调用了30次，这时候就会触发StopIteration异常。
 
+### 关于Max retries exceeded with url 的错误
+
+在爬取boss直聘时出现这种错误，于是搜索了网上很多文章，总结如下： 
+1.http连接太多没有关闭导致的，解决方法：
+
+```
+import requests
+requests.adapters.DEFAULT_RETRIES = 5 # 增加重连次数
+s = requests.session()
+s.keep_alive = False # 关闭多余连接
+s.get(url) # 你需要的网址
+```
+
+2.访问次数频繁，被禁止访问，解决方法：使用代理
+
+```
+import requests
+s = requests.session()
+url = "https://mail.163.com/"
+s.proxies = {"https": "47.100.104.247:8080", "http": "36.248.10.47:8080", }
+s.headers = header
+s.get(url)
+
+```
+
+
+查找代理的网址：http://ip.zdaye.com/shanghai_ip.html#Free 
+使用代理时需注意：1.代理分为http和https两种，不能用混，如果把http的代理用作https也是会报上面的错误;2.上面的代理以字典格式传入，例如上面的例子，可以是“47.100.104.247:8080”这种格式，也可以是“https://47.100.104.247:8080”这种格式；3.如果代理不可用一样会报上面的错误。以下方法判断代理是否可用：
+
+```
+import requests
+s = requests.session()
+url = "https://mail.163.com/"
+s.keep_alive = False
+s.proxies = {"https": "47.100.104.247:8080", "http": "36.248.10.47:8080", }
+s.headers = header
+r = s.get(url)
+print r.status_code  # 如果代理可用则正常访问，不可用报以上错误
+
+```
+
 
