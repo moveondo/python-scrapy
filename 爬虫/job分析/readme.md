@@ -1,3 +1,18 @@
+boss直聘网招聘信息爬取
+爬取boss直聘网的招聘信息
+
+加入了多进程，5分钟大概能爬300条数据，会在程序目录生产boss.json文件
+
+可以在run.py修改两个参数keyword, city_code，分别表示关键词和城市代码
+
+部分城市代码列表：
+
+city_code = { '全国': 100010000 '北京': 101010100 '上海': 101020100 '杭州': 101210100 '广州': 101280100 '深圳': 101280600 }
+
+运行to_excel.py把得到的json格式数据转化成excel格式
+
+
+
 ### Python pass 语句
 
 Python pass是空语句，是为了保持程序结构的完整性。
@@ -175,4 +190,8 @@ print r.status_code  # 如果代理可用则正常访问，不可用报以上错
 
 ```
 
+### 简单解决ImportError: No module named openpyxl
+
+> pip  install openpyxl
+> pip3  install openpyxl
 
