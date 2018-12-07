@@ -5,11 +5,10 @@
 import pdfkit
 
 # 有下面3中途径生产pdf
-# config = pdfkit.configuration(wkhtmltopdf='/usr/local/bin/wkhtmltopdf')
 
 
-pdfkit.from_url('http://google.com', 'out.pdf')
+pdfkit.from_url('http://baidu.com', 'out.pdf')
 
-# pdfkit.from_file('test.html', 'out.pdf')
+# pdfkit.from_file('test.html', 'out1.pdf')
 #
 # pdfkit.from_string('Hello!', 'out.pdf')
