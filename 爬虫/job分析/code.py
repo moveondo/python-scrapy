@@ -33,7 +33,7 @@ def get_page_index(keyword, city_code, offset):
         'https': 'https://103.251.87.56:868'
     }
     url = 'https://www.zhipin.com/job_detail/?' + urlencode(data)
-    # print(url)
+    print(url)
     try:
         urllib3.disable_warnings()
         res = requests.get(url, headers=headers)
@@ -175,6 +175,6 @@ def main(offset):
 if __name__ == '__main__':
     print("start...")
     pool = Pool()
-    pool.map(main, [i for i in range(1, 20)])
+    pool.map(main, [i for i in range(1, 2)])
     pool.close()
     pool.join()

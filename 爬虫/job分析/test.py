@@ -13,3 +13,6 @@ if __name__ == '__main__':
     # a.__next__()
     # x = a.send(5)
     # print(x)
+
+from datetime import datetime
+print(type(datetime.now()),datetime.now())
