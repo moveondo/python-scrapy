@@ -152,3 +152,6 @@ Robots协议
 	Disallow: /
 	
 ```
+
+> sudo -H pip install Scrapy
+
