@@ -12,14 +12,14 @@ class LagouSpider(scrapy.Spider):
     start_urls = ['https://www.lagou.com/']
 
     curPage = 1
-    city_name = "郑州"
-    job_name = "PHP"
-    url = 'https://www.lagou.com/jobs/positionAjax.json?px=default&city=郑州&needAddtionalResult=false'
+    city_name = "上海"
+    job_name = "web"
+    url = 'https://www.lagou.com/jobs/positionAjax.json?px=default&city=上海&needAddtionalResult=false'
     headers = {
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         'Accept-Encoding': 'gzip, deflate',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36',
-        "Referer": "https://www.lagou.com/jobs/list_php?cl=false&fromSearch=true&labelWords=&suginput=&city=郑州"}
+        "Referer": "https://www.lagou.com/jobs/list_php?cl=false&fromSearch=true&labelWords=&suginput=&city=上海"}
 
     def start_requests(self):
         return [self.next_request()]

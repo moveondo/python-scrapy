@@ -7,9 +7,9 @@ import math
 
 class Job58Spider(scrapy.Spider):
     name = 'job58'
-    allowed_domains = ['zz.58.com']
-    start_urls = ['http://zz.58.com/']
-    positionUrl = 'http://zz.58.com/job/?key=php&final=1&jump=1'
+    allowed_domains = ['sh.58.com']
+    start_urls = ['http://sh.58.com/']
+    positionUrl = 'http://sh.58.com/job/?key=php&final=1&jump=1'
     curPage = 0
     headers = {}
 
@@ -64,9 +64,9 @@ class Job58Spider(scrapy.Spider):
     def next_request(self):
         self.curPage += 1
         if (self.curPage > 1):
-            self.positionUrl = "http://zz.58.com/job/pn" + str(self.curPage) + "/?key=php&final=1&jump=1"
+            self.positionUrl = "http://sh.58.com/job/pn" + str(self.curPage) + "/?key=web&final=1&jump=1"
         print("job58 page:" + str(self.curPage))
-        time.sleep(10)
+        time.sleep(5)
         return scrapy.http.FormRequest(
             self.positionUrl,
             headers=self.headers,

@@ -61,7 +61,7 @@ class Job51Spider(scrapy.Spider):
     # 发送请求
     def next_request(self):
         self.curPage += 1
-        self.positionUrl = "http://search.51job.com/list/170200,000000,0000,00,9,99,php,2," + str(
+        self.positionUrl = "http://search.51job.com/list/020000,000000,0000,00,9,99,web,2," + str(
             self.curPage) + ".html"
         print("51job page:" + str(self.curPage))
         time.sleep(5)
