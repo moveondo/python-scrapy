@@ -259,10 +259,11 @@ dont_click（boolean） - 如果为True，表单数据将在不点击任何元�
 ```
 
 这个类方法的其他参数直接传递给 FormRequest构造函数。
-在新版本0.10.3：该formname参数。
-在新版本0.17：该formxpath参数。
-新的版本1.1.0：该formcss参数。
-新的版本1.1.0：该formid参数。
+
+* 在新版本0.10.3：该formname参数。
+*  在新版本0.17：该formxpath参数。
+*  新的版本1.1.0：该formcss参数。
+*  新的版本1.1.0：该formid参数。
 
 
 
@@ -324,45 +325,45 @@ flags（list） - 是一个包含属性初始值的 Response.flags列表。如�
 request（Requestobject） - 属性的初始值Response.request。这代表Request生成此响应。
 ```
 
-url
+* url
 
 包含响应的URL的字符串。此属性为只读。更改响应使用的URL replace()。
 
 status:表示响应的HTTP状态的整数。示例：200， 404。
 
-headers
+* headers
 
 包含响应标题的类字典对象。可以使用get()返回具有指定名称的第一个标头值或getlist()返回具有指定名称的所有标头值来访问值。例如，此调用会为您提供标题中的所有Cookie：
 response.headers.getlist('Set-Cookie')
 
-body
+* body
 
 本回复的正文。记住Response.body总是一个字节对象。如果你想unicode版本使用 TextResponse.text（只在TextResponse 和子类中可用）。
 此属性为只读。更改响应使用的主体 replace()。
 
-request
+* request
 
 Request生成此响应的对象。在响应和请求通过所有下载中间件后，此属性在Scrapy引擎中分配。特别地，这意味着：
 HTTP重定向将导致将原始请求（重定向之前的URL）分配给重定向响应（重定向后具有最终URL）。
 
 Response.request.url并不总是等于Response.url,此属性仅在爬虫程序代码和 Spider Middleware中可用，但不能在Downloader Middleware中使用（尽管您有通过其他方式可用的请求）和处理程序response_downloaded。
 
-meta
+* meta
 
 的快捷方式Request.meta的属性 Response.request对象（即self.request.meta）。
 与Response.request属性不同，Response.meta 属性沿重定向和重试传播，因此您将获得Request.meta从您的爬虫发送的原始属性。
 也可以看看equest.meta 属性
 
-flags
+* flags
 
 包含此响应的标志的列表。标志是用于标记响应的标签。例如：'cached'，'redirected '等等。
 它们显示在Response（__ str__ 方法）的字符串表示上，它被引擎用于日志记录。
 
-copy（）
+*  copy（）
 
 返回一个新的响应，它是此响应的副本。
 
-replace（[ url，status，headers，body，request，flags，cls ] ）
+*  replace（[ url，status，headers，body，request，flags，cls ] ）
 
 返回具有相同成员的Response对象，但通过指定的任何关键字参数赋予新值的成员除外。该属性Response.meta是默认复制。
 urljoin（url ）
@@ -387,7 +388,7 @@ TextResponse对象支持一个新的构造函数参数，除了基础Response对
 参数：   encoding（string） - 是一个字符串，包含用于此响应的编码。如果你创建一个TextResponse具有unicode主体的对象，它将使用这个编码进行编码（记住body属性总是一个字符串）。如果encoding是None（默认值），则将在响应标头和正文中查找编码。
 TextResponse除了标准对象之外，对象还支持以下属性Response
 
-text
+*  text
 
 响应体，如unicode。
 同样response.body.decode(response.encoding)，但结果是在第一次调用后缓存，因此您可以访问 response.text多次，无需额外的开销。
@@ -396,7 +397,7 @@ text
 
 unicode(response.body)不是一个正确的方法来将响应身体转换为unicode：您将使用系统默认编码（通常为ascii）而不是响应编码。
 
-encoding 包含此响应的编码的字符串。编码通过尝试以下机制按顺序解决：
+* encoding 包含此响应的编码的字符串。编码通过尝试以下机制按顺序解决：
 
 在构造函数编码参数中传递的编码
 
@@ -406,13 +407,13 @@ encoding 包含此响应的编码的字符串。编码通过尝试以下机制�
 
 通过查看响应体来推断的编码。这是更脆弱的方法，但也是最后一个尝试。
 
-selector
+* selector
 
 一个Selector使用响应为目标实例。选择器在第一次访问时被延迟实例化。
 
 TextResponse对象除了标准对象外还支持以下方法Response：
 
-xpath（查询）
+* xpath（查询）
 
 快捷方式TextResponse.selector.xpath(query)：
 
@@ -424,17 +425,17 @@ css(query)
 
 response.css('p')
 
-body_as_unicode()
+* body_as_unicode()
 
 同样text，但可用作方法。保留此方法以实现向后兼容; 请喜欢response.text。
 
-HtmlResponse对象
+* HtmlResponse对象
 
 class scrapy.http.HtmlResponse（url [，... ] ）
 
 本HtmlResponse类的子类，TextResponse 这增加了通过查看HTML编码自动发现支持META HTTP-EQUIV属性。见TextResponse.encoding。
 
-XmlResponse对象
+* XmlResponse对象
 
 class scrapy.http.XmlResponse（url [，... ] ）
 
